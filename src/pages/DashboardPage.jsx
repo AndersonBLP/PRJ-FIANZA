@@ -113,6 +113,32 @@ export default function DashboardPage() {
         >
           Configurar Presupuesto
         </button>
+
+        {showSettings && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+            <div className="w-full max-w-sm glass p-6 rounded-3xl animate-fade-in text-left">
+              <div className="flex justify-between items-center mb-6 border-b border-white/10 pb-4">
+                <h2 className="text-xl font-bold text-white">Configuración Inicial</h2>
+                <button onClick={() => setShowSettings(false)} className="text-text-muted hover:text-white">✕</button>
+              </div>
+              
+              <form onSubmit={handleSaveBudget} className="space-y-4 mb-4">
+                <div>
+                  <label className="block text-sm text-text-muted mb-1 font-medium">Presupuesto Quincenal</label>
+                  <input 
+                    type="number" 
+                    className="w-full bg-black/30 border border-white/10 rounded-xl p-3 text-white text-lg"
+                    value={newBudget}
+                    onChange={(e) => setNewBudget(e.target.value)}
+                  />
+                </div>
+                <button type="submit" className="w-full bg-primary hover:bg-primary/90 text-white font-bold py-3 rounded-xl transition-colors">
+                  Guardar Presupuesto
+                </button>
+              </form>
+            </div>
+          </div>
+        )}
       </div>
     );
   }
